@@ -5,7 +5,6 @@ import languages
 import os
 
 API_KEY = os.environ.get('API_KEY')
-# API_KEY = "9a35fdaa8bmsh64d201965518884p14fa46jsne83376c9e265"
 
 
 def get_news(keyword, language):
