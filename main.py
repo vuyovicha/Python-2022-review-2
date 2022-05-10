@@ -5,11 +5,9 @@ import languages
 import os
 
 
-# TOKEN = os.environ.get('TOKEN')
 TOKEN = os.getenv('TOKEN')
-# HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
 HEROKU_APP_NAME = os.getenv('HEROKU_APP_NAME')
-PORT = int(os.environ.get('PORT', 5000))  # or 8443
+PORT = int(os.environ.get('PORT', 8443))
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
