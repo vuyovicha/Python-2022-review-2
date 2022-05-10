@@ -3,8 +3,7 @@
 ## Описание
 Бот RecentNews умеет отправлять пользователю последние интересующие его новости по конкретному запросу. 
 
-@stack_over_telegram_bot
-t.me/stack_over_telegram_bot 
+[t.me/stack_over_telegram_bot](t.me/stack_over_telegram_bot) 
 
 ## Что реализовано
 1) Web-scrapping новостного ресурса Bing News Search
