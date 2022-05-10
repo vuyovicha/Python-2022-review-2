@@ -5,7 +5,9 @@ import languages
 import os
 
 
+# TOKEN = os.environ.get('TOKEN')
 TOKEN = os.getenv('TOKEN')
+# HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
 HEROKU_APP_NAME = os.getenv('HEROKU_APP_NAME')
 PORT = int(os.environ.get('PORT', '8443'))
 
@@ -56,14 +58,15 @@ def main():
     dp.add_error_handler(error)
 
     # updater.start_polling()
+    WEBHOOK_HOST = f'https://{HEROKU_APP_NAME}.herokuapp.com/'
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
-                          url_path=TOKEN)
-    WEBHOOK_HOST = f'https://{HEROKU_APP_NAME}.herokuapp.com/'
-    updater.bot.setWebhook(WEBHOOK_HOST + TOKEN)
+                          url_path=TOKEN,
+                          webhook_url=WEBHOOK_HOST + TOKEN)
+    # WEBHOOK_HOST = f'https://{HEROKU_APP_NAME}.herokuapp.com/'
+    # updater.bot.setWebhook(WEBHOOK_HOST + TOKEN)
     updater.idle()
 
 
 Language = languages.Language()
 main()
-
