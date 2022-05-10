@@ -34,9 +34,9 @@ def respond(update, context):
     lang = update.message.from_user.language_code
     data_news, data_urls = web.get_news(update.message.text, lang)
     if not data_news:
-        Language.echo_404(lang)
+        update.message.reply_text(Language.echo_404(lang))
     elif len(data_news) == 0:
-        Language.echo_nothing_found(lang)
+        update.message.reply_text(Language.echo_nothing_found(lang))
     else:
         for i in range(len(data_news)):
             update.message.reply_text(f'{data_news[i]}\n\n{data_urls[i]}')
