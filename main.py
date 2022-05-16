@@ -1,7 +1,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
-import web
-import languages
+import src.web
+import src.languages
 import os
 
 
@@ -32,7 +32,7 @@ def help(update, context):
 def respond(update, context):
     """Respond to the user's news request"""
     lang = update.message.from_user.language_code
-    data_news, data_urls = web.get_news(update.message.text, lang)
+    data_news, data_urls = src.web.get_news(update.message.text, lang)
     if not data_news:
         update.message.reply_text(Language.echo_404(lang))
     elif len(data_news) == 0:
@@ -65,6 +65,6 @@ def main():
     updater.idle()
 
 
-Language = languages.Language()
+Language = src.languages.Language()
 main()
 

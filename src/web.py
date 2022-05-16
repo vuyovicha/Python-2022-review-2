@@ -1,7 +1,7 @@
 import json
-import strings
+import src.strings as strs
 import requests
-import languages
+import src.languages as langs
 import os
 
 API_KEY = os.environ.get('API_KEY')
@@ -10,19 +10,19 @@ API_KEY = os.environ.get('API_KEY')
 def get_news(keyword, language):
     """API call to Bing news service to get the news"""
 
-    if not language == languages.Language.RUSSIAN:
-        language = languages.Language.ENGLISH
+    if not language == langs.Language.RUSSIAN:
+        language = langs.Language.ENGLISH
 
-    querystring = {"q": keyword, "count": strings.NEWS_COUNT, "sortBy": "Date", "setLang": language, "freshness": "Day", "textFormat": "Raw", "safeSearch": "Off"}
+    querystring = {"q": keyword, "count": strs.NEWS_COUNT, "sortBy": "Date", "setLang": language, "freshness": "Day", "textFormat": "Raw", "safeSearch": "Off"}
 
     headers = {
         "X-BingApis-SDK": "true",
         "Accept-Language": language,
-        "X-RapidAPI-Host": strings.API_HOST,
+        "X-RapidAPI-Host": strs.API_HOST,
         "X-RapidAPI-Key": API_KEY
     }
 
-    response = requests.request("GET", strings.URL, headers=headers, params=querystring)
+    response = requests.request("GET", strs.URL, headers=headers, params=querystring)
 
     if response.status_code == 200:
         data = json.loads(response.text)
